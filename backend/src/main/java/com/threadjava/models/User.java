@@ -1,9 +1,9 @@
 package com.threadjava.models;
 
-import javax.persistence.*;
+        import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User extends BaseEntity {
 
     @Column(name = "email")
