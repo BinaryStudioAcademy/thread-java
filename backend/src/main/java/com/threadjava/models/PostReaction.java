@@ -1,5 +1,6 @@
 package com.threadjava.models;
 
+import lombok.*;
 import javax.persistence.*;
 
 @Entity
@@ -7,9 +8,13 @@ import javax.persistence.*;
 public class PostReaction extends BaseEntity {
 
     @Column(name = "isLike")
-    public Boolean isLike;
+    @Getter @Setter private Boolean isLike;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "users_id")
-    public User user;
+    @Getter @Setter private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "posts_id")
+    @Getter @Setter private Post post;
 }

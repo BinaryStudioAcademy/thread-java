@@ -1,5 +1,6 @@
 package com.threadjava.models;
 
+import lombok.*;
 import javax.persistence.*;
 
 @Entity
@@ -7,5 +8,5 @@ import javax.persistence.*;
 public class Image extends BaseEntity {
 
     @Column(name = "URL")
-    public String URL;
+    @Getter @Setter private String URL;
 }

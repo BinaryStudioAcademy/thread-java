@@ -1,5 +1,6 @@
 package com.threadjava.models;
 
+import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +10,19 @@ import java.util.List;
 public class Post extends BaseEntity {
 
     @Column(name = "body")
-    public String body;
+    @Getter @Setter private String body;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "images_id")
-    public Image image;
+    @Getter @Setter private Image image;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "users_id")
-    public User user;
+    @Getter @Setter private User user;
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public List<Comment> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Getter @Setter private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "reactions", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public List<PostReaction> reactions = new ArrayList<>();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Getter @Setter private List<PostReaction> reactions = new ArrayList<>();
 }
