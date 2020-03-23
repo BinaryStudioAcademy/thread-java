@@ -10,19 +10,19 @@ import java.util.List;
 public class Post extends BaseEntity {
 
     @Column(name = "body")
-    @Getter @Setter private String body;
+    @Getter @Setter public String body;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "images_id")
-    @Getter @Setter private Image image;
+    @Getter @Setter public Image image;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "users_id")
-    @Getter @Setter private User user;
+    @Getter @Setter public User user;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Getter @Setter private List<Comment> comments = new ArrayList<>();
+    @Getter @Setter public List<Comment> comments = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Getter @Setter private List<PostReaction> reactions = new ArrayList<>();
+    @Getter @Setter public List<PostReaction> reactions = new ArrayList<>();
 }

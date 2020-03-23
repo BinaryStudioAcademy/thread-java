@@ -9,6 +9,6 @@ public class BaseEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO, generator="ID_SEQ")
     @SequenceGenerator(name="ID_SEQ", sequenceName="ID_SEQ",allocationSize=1)
-    @Getter @Setter private Long id;
+    @Getter @Setter public Long id;
 
 }

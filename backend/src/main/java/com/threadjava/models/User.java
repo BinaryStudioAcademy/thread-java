@@ -8,15 +8,15 @@ import javax.persistence.*;
 public class User extends BaseEntity {
 
     @Column(name = "email")
-    @Getter @Setter private String email;
+    @Getter @Setter public String email;
 
     @Column(name = "username")
-    @Getter @Setter private String username;
+    @Getter @Setter public String username;
 
     @Column(name = "password")
-    @Getter @Setter private String password;
+    @Getter @Setter public String password;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "avatars_id")
-    @Getter @Setter private Image avatar;
+    @Getter @Setter public Image avatar;
 }

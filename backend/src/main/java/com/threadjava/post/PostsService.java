@@ -9,8 +9,12 @@ public class PostsService {
     @Autowired
     private PostsRepository postsCrudRepository;
 
-    public Iterable<Post> findAll(){
+    public Iterable<Post> getAllPosts(){
         return postsCrudRepository.findAll();
+    }
+
+    public Post getPostById(Long id){
+        return postsCrudRepository.findById(id).orElseThrow();
     }
 
     public Post create(Post entity){

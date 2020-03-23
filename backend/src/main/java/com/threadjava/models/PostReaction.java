@@ -8,13 +8,13 @@ import javax.persistence.*;
 public class PostReaction extends BaseEntity {
 
     @Column(name = "isLike")
-    @Getter @Setter private Boolean isLike;
+    @Getter @Setter public Boolean isLike;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "users_id")
-    @Getter @Setter private User user;
+    @Getter @Setter public User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "posts_id")
-    @Getter @Setter private Post post;
+    @Getter @Setter public Post post;
 }

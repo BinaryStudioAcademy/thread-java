@@ -13,7 +13,7 @@ public class PostsController {
 
     @GetMapping
     public Iterable<Post> get() {
-        return postsService.findAll();
+        return postsService.getAllPosts();
     }
 
     @PostMapping

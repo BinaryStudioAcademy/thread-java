@@ -8,13 +8,13 @@ import javax.persistence.*;
 public class Comment extends BaseEntity {
 
     @Column(name = "body")
-    @Getter @Setter private String body;
+    @Getter @Setter public String body;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "users_id")
-    @Getter @Setter private User user;
+    @Getter @Setter public User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "posts_id")
-    @Getter @Setter private Post post;
+    @Getter @Setter public Post post;
 }

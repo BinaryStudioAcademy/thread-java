@@ -8,5 +8,5 @@ import javax.persistence.*;
 public class Image extends BaseEntity {
 
     @Column(name = "URL")
-    @Getter @Setter private String URL;
+    @Getter @Setter public String URL;
 }
