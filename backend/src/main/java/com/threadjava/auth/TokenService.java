@@ -39,7 +39,7 @@ public class TokenService {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
-    private Boolean isTokenExpired(String token) {
+    public Boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
@@ -59,8 +59,8 @@ public class TokenService {
                 .compact();
     }
 
-    public Boolean validateToken(String token, AuthUser userDetails) {
-        final String userid = extractUserid(token);
-        return (userid.equals(userDetails.id) && !isTokenExpired(token));
-    }
+//    public Boolean validateToken(String token, AuthUser userDetails) {
+//        final String userid = extractUserid(token);
+//        return (userid.equals(userid) && !isTokenExpired(token));
+//    }
 }
