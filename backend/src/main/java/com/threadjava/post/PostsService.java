@@ -3,6 +3,7 @@ package com.threadjava.post;
 import com.threadjava.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.UUID;
 
 @Service
 public class PostsService {
@@ -13,7 +14,7 @@ public class PostsService {
         return postsCrudRepository.findAll();
     }
 
-    public Post getPostById(Long id){
+    public Post getPostById(UUID id){
         return postsCrudRepository.findById(id).orElseThrow();
     }
 
