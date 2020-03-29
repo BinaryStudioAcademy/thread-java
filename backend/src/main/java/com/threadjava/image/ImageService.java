@@ -26,7 +26,7 @@ public class ImageService {
     public Image upload(MultipartFile file) throws IOException {
         var result = this.uploadFile(file.getBytes());
         var image = new Image();
-        image.URL = result.data.link;
+        image.link = result.data.link;
         image.deleteHash = result.data.deletehash;
         return imageRepository.save(image);
     }
