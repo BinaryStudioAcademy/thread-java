@@ -36,9 +36,9 @@ public class PostsService {
         return modelMapper.map(post, PostDto.class);
     }
 
-    public PostDto create(PostDto postDto){
+    public PostDto create(PostDto postDto, UUID userId){
         Post post = modelMapper.map(postDto, Post.class);
-        post.user =  usersRepository.findById(getUserId()).get();
+        post.user =  usersRepository.findById(userId).get();
         Post postCreated = postsCrudRepository.save(post);
         return modelMapper.map(postCreated, PostDto.class);
     }

@@ -32,7 +32,7 @@ public class PostsController {
     @PostMapping
     public PostDto post(@RequestBody PostDto postDto) {
         //TODO: 'new_post', post// notify all users that a new post was created
-        return postsService.create(postDto);
+        return postsService.create(postDto, getUserId());
     }
 
 //    @PutMapping("/react")

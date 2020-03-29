@@ -22,9 +22,9 @@ public class CommentService {
         return modelMapper.map(comment, CommentDto.class);
     }
 
-    public CommentDto create(CommentDto postDto){
+    public CommentDto create(CommentDto postDto, UUID userId){
         Comment comment = modelMapper.map(postDto, Comment.class);
-        comment.user =  usersRepository.findById(getUserId()).get();
+        comment.user =  usersRepository.findById(userId).get();
         Comment postCreated = commentRepository.save(comment);
         return modelMapper.map(postCreated, CommentDto.class);
     }
