@@ -24,7 +24,7 @@ public class PostsService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<PostDto> getAllPosts(){
+    public List<PostDto> getAllPosts(Integer from, Integer count, UUID userId){
         var posts = postsCrudRepository.findAll();
         return StreamSupport.stream(posts.spliterator(), false)
                 .map(x -> modelMapper.map(x, PostDto.class))
