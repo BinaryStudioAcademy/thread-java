@@ -3,13 +3,11 @@ package com.threadjava.auth;
 import com.threadjava.models.User;
 import com.threadjava.users.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import java.util.UUID;
+import static com.threadjava.auth.TokenService.getUserId;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
     @Autowired
     private AuthService authService;
@@ -28,9 +26,7 @@ public class AuthController {
 
     @GetMapping("/user")
     public User getUser() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        var currentUserId = (String)auth.getPrincipal();
-        var user = userDetailsService.getUserById(UUID.fromString(currentUserId));
+        var user = userDetailsService.getUserById(getUserId());
         return user;
     }
 }

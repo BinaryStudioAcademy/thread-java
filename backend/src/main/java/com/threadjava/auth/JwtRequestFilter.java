@@ -28,7 +28,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         final String header = request.getHeader(HEADER_STRING);
 
-        if (header == null || !header.startsWith(TOKEN_PREFIX)) {
+        if (header == null || !header.startsWith(TOKEN_PREFIX)){// || request.getRequestURI().matches()) {
             chain.doFilter(request, response);
             return;
         }

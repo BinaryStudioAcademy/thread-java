@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.2'
 	implementation "org.springframework.boot:spring-boot-starter-security"
 	implementation "io.jsonwebtoken:jjwt-api:0.10.5"
 	implementation "io.jsonwebtoken:jjwt-impl:0.10.5"
