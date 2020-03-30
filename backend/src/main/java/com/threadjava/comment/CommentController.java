@@ -1,5 +1,7 @@
 package com.threadjava.comment;
 
+import com.threadjava.comment.model.CommentDetailsDto;
+import com.threadjava.comment.model.CommentSaveDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
@@ -12,12 +14,12 @@ public class CommentController {
     private CommentService commentService;
 
     @GetMapping("/{id}")
-    public CommentDto get(@PathVariable UUID id) {
+    public CommentDetailsDto get(@PathVariable UUID id) {
         return commentService.getPostById(id);
     }
 
     @PostMapping
-    public CommentDto post(@RequestBody CommentDto commentDto) {
+    public CommentDetailsDto post(@RequestBody CommentSaveDto commentDto) {
         return commentService.create(commentDto, getUserId());
     }
 }

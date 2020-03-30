@@ -1,7 +1,7 @@
 package com.threadjava.post;
 
 import com.threadjava.models.Post;
-import com.threadjava.models.PostReaction;
+import com.threadjava.post.model.PostDetailsDto;
 import com.threadjava.postReactions.PostReactionsRepository;
 import com.threadjava.users.UsersRepository;
 import org.modelmapper.ModelMapper;
@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-import static com.threadjava.auth.TokenService.getUserId;
 
 @Service
 public class PostsService {
@@ -24,23 +23,23 @@ public class PostsService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<PostDto> getAllPosts(Integer from, Integer count, UUID userId){
+    public List<PostDetailsDto> getAllPosts(Integer from, Integer count, UUID userId){
         var posts = postsCrudRepository.findAll();
         return StreamSupport.stream(posts.spliterator(), false)
-                .map(x -> modelMapper.map(x, PostDto.class))
+                .map(x -> modelMapper.map(x, PostDetailsDto.class))
                 .collect(Collectors.toList());
     }
 
-    public PostDto getPostById(UUID id){
+    public PostDetailsDto getPostById(UUID id){
         var post = postsCrudRepository.findById(id).orElseThrow();
-        return modelMapper.map(post, PostDto.class);
+        return modelMapper.map(post, PostDetailsDto.class);
     }
 
-    public PostDto create(PostDto postDto, UUID userId){
+    public PostDetailsDto create(PostDetailsDto postDto, UUID userId){
         Post post = modelMapper.map(postDto, Post.class);
         post.user =  usersRepository.findById(userId).get();
         Post postCreated = postsCrudRepository.save(post);
-        return modelMapper.map(postCreated, PostDto.class);
+        return modelMapper.map(postCreated, PostDetailsDto.class);
     }
 
 //    public PostReaction setReaction(PostReaction postReaction) {

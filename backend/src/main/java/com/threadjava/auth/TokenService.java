@@ -1,5 +1,6 @@
 package com.threadjava.auth;
 
+import com.threadjava.auth.model.AuthUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

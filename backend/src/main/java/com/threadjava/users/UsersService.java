@@ -1,6 +1,6 @@
 package com.threadjava.users;
 
-import com.threadjava.auth.AuthUser;
+import com.threadjava.auth.model.AuthUser;
 import com.threadjava.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;

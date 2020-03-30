@@ -1,15 +1,11 @@
 package com.threadjava.post;
 
 
-import com.threadjava.models.Post;
-import com.threadjava.models.PostReaction;
-import org.modelmapper.ModelMapper;
+import com.threadjava.post.model.PostDetailsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import static com.threadjava.auth.TokenService.getUserId;
 
@@ -20,19 +16,19 @@ public class PostsController {
     private PostsService postsService;
 
     @GetMapping
-    public List<PostDto> get(@RequestParam(defaultValue="0") Integer from,
-                             @RequestParam(defaultValue="10") Integer count,
-                             @RequestParam(required = false) UUID userId) {
+    public List<PostDetailsDto> get(@RequestParam(defaultValue="0") Integer from,
+                                    @RequestParam(defaultValue="10") Integer count,
+                                    @RequestParam(required = false) UUID userId) {
         return postsService.getAllPosts(from, count, userId);
     }
 
     @GetMapping("/{id}")
-    public PostDto get(@PathVariable UUID id) {
+    public PostDetailsDto get(@PathVariable UUID id) {
         return postsService.getPostById(id);
     }
 
     @PostMapping
-    public PostDto post(@RequestBody PostDto postDto) {
+    public PostDetailsDto post(@RequestBody PostDetailsDto postDto) {
         //TODO: 'new_post', post// notify all users that a new post was created
         return postsService.create(postDto, getUserId());
     }

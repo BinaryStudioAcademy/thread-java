@@ -1,4 +1,4 @@
-package com.threadjava.auth;
+package com.threadjava.auth.model;
 
 public class UserLoginDTO{
     public String email;
