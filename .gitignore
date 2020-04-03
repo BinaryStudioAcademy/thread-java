@@ -34,3 +34,4 @@ yarn-error.log*
 # Dependency directories
 node_modules/
 **/bin/
+frontend/.env
