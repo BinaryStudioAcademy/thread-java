@@ -35,3 +35,4 @@ yarn-error.log*
 node_modules/
 **/bin/
 frontend/.env
+frontend/package-lock.json
