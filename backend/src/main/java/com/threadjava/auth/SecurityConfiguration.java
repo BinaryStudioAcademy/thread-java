@@ -13,8 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import static com.threadjava.auth.SecurityConstants.LOGIN_URL;
-import static com.threadjava.auth.SecurityConstants.SIGN_UP_URL;
+import static com.threadjava.auth.SecurityConstants.ROUTES_WHITE_LIST;
 
 
 @EnableWebSecurity
@@ -29,10 +28,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors().and()
+               .cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(LOGIN_URL, SIGN_UP_URL).permitAll()
+                .antMatchers(ROUTES_WHITE_LIST)
+                .permitAll()
                 .anyRequest().authenticated().and()
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
 //                .exceptionHandling().and()

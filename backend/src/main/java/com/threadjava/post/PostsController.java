@@ -3,6 +3,7 @@ package com.threadjava.post;
 
 import com.threadjava.post.model.PostDetailsDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
@@ -14,6 +15,8 @@ import static com.threadjava.auth.TokenService.getUserId;
 public class PostsController {
     @Autowired
     private PostsService postsService;
+    @Autowired
+    private SimpMessagingTemplate template;
 
     @GetMapping
     public List<PostDetailsDto> get(@RequestParam(defaultValue="0") Integer from,
@@ -30,7 +33,9 @@ public class PostsController {
     @PostMapping
     public PostDetailsDto post(@RequestBody PostDetailsDto postDto) {
         //TODO: 'new_post', post// notify all users that a new post was created
-        return postsService.create(postDto, getUserId());
+        var item = postsService.create(postDto, getUserId());
+        template.convertAndSend("/topic/new_post", item);
+        return item;
     }
 
 //    @PutMapping("/react")
