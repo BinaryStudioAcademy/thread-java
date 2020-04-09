@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import io from 'socket.io-client';
-// import SockJsClient from 'react-stomp';
 import { Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
@@ -24,54 +22,40 @@ class Notifications extends React.Component {
     checkLoggedInUser = (prevProps) => {
         if (this.socket && !this.props.user && this.props.user !== prevProps.user) {
             // this.socket.emit('leaveRoom', prevProps.user.id);
+            this.stompClient.disconnect()
         }
     }
 
     addSocketHandlers = (userId) => {
         // this.socket.emit('createRoom', userId);
-        // this.socket.on('like', () => {
-        //     NotificationManager.info('Your post was liked!');
-        // });
-        // this.socket.on('new_post', (post) => {
-        //     if (post.userId !== userId) {
-        //         this.props.applyPost(post.id);
-        //     }
-        // });
-        this.socket.addEventListener('new_post', function (event) {
-          console.log('message from server2: ' + event.data);
+        this.stompClient.subscribe('/topic/like', () => {
+            NotificationManager.info('Your post was liked!');
+        });
+        this.stompClient.subscribe('/topic/new_post', (message) => {
+            let post = JSON.parse(message.body);
+            console.log('message from server2: ' + post);
+            if (post.user.id !== userId) {
+                this.props.applyPost(post.id);
+            }
         });
     }
 
     initSocket() {
-        //  const { user } = this.props;
-        // if (!this.socket && user && user.id) {
-        //     const { REACT_APP_SOCKET_SERVER, REACT_APP_SOCKET_SERVER_PORT } = process.env;
-        //     const address = `http://${REACT_APP_SOCKET_SERVER}:${REACT_APP_SOCKET_SERVER_PORT}`;
-        //     this.socket = io(address);
-        //     this.addSocketHandlers(user.id);
-        // }
-
         const { user } = this.props;
         if (!this.socket && user && user.id) {
-            const { REACT_APP_SOCKET_SERVER, REACT_APP_SOCKET_SERVER_PORT } = process.env;
-            const address = `ws://${REACT_APP_SOCKET_SERVER}:8080/api/events`;
-            // this.socket = new WebSocket("ws://localhost:3001/ws");
-            this.socket = new SockJS("http://localhost:3001/ws");
+            this.socket = new SockJS("/ws");
             this.stompClient = Stomp.over(this.socket);
-            // this.stompClient.debug = () => {}
-            this.stompClient.connect({}, frame => {
-                this.stompClient.subscribe('/topic/message', message => {
-                   console.log(message.body);
-                })
-            })
-            this.addSocketHandlers(user.id);
+            this.stompClient.debug = () => { };
+            this.stompClient.connect({}, () => {
+                this.addSocketHandlers(user.id);
+            });
         }
     }
 
     render() {
         return <NotificationContainer>
-            
-            </NotificationContainer>;
+
+        </NotificationContainer>;
     }
 }
 
