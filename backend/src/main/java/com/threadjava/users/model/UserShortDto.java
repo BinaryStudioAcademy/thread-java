@@ -7,5 +7,5 @@ import java.util.UUID;
 public class UserShortDto {
     @Getter @Setter public UUID id;
     @Getter @Setter public String username;
-    @Getter @Setter public String imageId;
+//    @Getter @Setter public String imageId;
 }

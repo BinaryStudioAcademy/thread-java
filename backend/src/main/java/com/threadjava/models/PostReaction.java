@@ -4,6 +4,8 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "post_reaction")
 public class PostReaction extends BaseEntity {
 
