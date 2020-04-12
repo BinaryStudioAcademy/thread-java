@@ -28,7 +28,7 @@ public class PostsService {
     public List<PostListDto> getAllPosts(Integer from, Integer count, UUID userId) {
         var pageable = PageRequest.of(from / count, count);
 
-        var posts = postsCrudRepository.findAllPosts(pageable);
+        var posts = postsCrudRepository.findAllPosts(userId, pageable);
 
         return StreamSupport.stream(posts.spliterator(), false).map(x -> PostMapper.MAPPER.postListToPostListDto(x))
                 .collect(Collectors.toList());

@@ -18,7 +18,9 @@ public interface PostsRepository extends CrudRepository<Post, UUID> {
             "(SELECT COALESCE(SUM(CASE WHEN pr.isLike = FALSE THEN 1 ELSE 0 END), 0) FROM p.reactions pr WHERE pr.post = p), " +
             "(SELECT COUNT(*) FROM p.comments), " +
             "p.createdAt, i, p.user) " +
-            "FROM Post p LEFT JOIN p.image i " +
+            "FROM Post p " +
+            "LEFT JOIN p.image i " +
+            "WHERE ( cast(:userId as string) is null OR p.user.id = :userId) " +
             "order by p.createdAt desc" )
-    List<PostListModel> findAllPosts(Pageable pageable);
+    List<PostListModel> findAllPosts(@Param("userId") UUID userId, Pageable pageable);
 }
