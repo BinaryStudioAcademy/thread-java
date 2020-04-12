@@ -20,7 +20,7 @@ public class PostsController {
     private SimpMessagingTemplate template;
 
     @GetMapping
-    public List<PostDetailsDto> get(@RequestParam(defaultValue="0") Integer from,
+    public List<PostListDto> get(@RequestParam(defaultValue="0") Integer from,
                                  @RequestParam(defaultValue="10") Integer count,
                                  @RequestParam(required = false) UUID userId) {
         return postsService.getAllPosts(from, count, userId);

@@ -2,7 +2,6 @@ package com.threadjava.post;
 
 import com.threadjava.models.*;
 import com.threadjava.post.model.*;
-import com.threadjava.postReactions.PostReactionDto;
 import com.threadjava.postReactions.PostReactionsRepository;
 import com.threadjava.users.UsersRepository;
 import org.modelmapper.ModelMapper;
@@ -10,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -24,27 +24,26 @@ public class PostsService {
     private UsersRepository usersRepository;
     @Autowired
     private PostReactionsRepository postReactionsRepository;
-    @Autowired
-    private ModelMapper modelMapper;
 
-    public List<PostDetailsDto> getAllPosts(Integer from, Integer count, UUID userId) {
-        var pageable = PageRequest.of(from/count, count, Sort.Direction.DESC, "createdAt");
-        var posts = postsCrudRepository.findAll(pageable);
-//        return posts;
-        return StreamSupport.stream(posts.spliterator(), false).map(x -> modelMapper.map(x, PostDetailsDto.class))
+    public List<PostListDto> getAllPosts(Integer from, Integer count, UUID userId) {
+        var pageable = PageRequest.of(from / count, count);
+
+        var posts = postsCrudRepository.findAllPosts(pageable);
+
+        return StreamSupport.stream(posts.spliterator(), false).map(x -> PostMapper.MAPPER.postListToPostListDto(x))
                 .collect(Collectors.toList());
     }
 
     public PostDetailsDto getPostById(UUID id) {
         var post = postsCrudRepository.findById(id).orElseThrow();
-        return modelMapper.map(post, PostDetailsDto.class);
+        return PostMapper.MAPPER.postToPostDetailsDto(post);
     }
 
     public PostDetailsDto create(PostDetailsDto postDto, UUID userId) {
-        Post post = modelMapper.map(postDto, Post.class);
+        Post post = PostMapper.MAPPER.postDetailsDtoToPost(postDto);
         post.user = usersRepository.findById(userId).get();
         Post postCreated = postsCrudRepository.save(post);
-        return modelMapper.map(postCreated, PostDetailsDto.class);
+        return PostMapper.MAPPER.postToPostDetailsDto(postCreated);
     }
 
     public Optional<ResponcePostReactionDto> setReaction(UUID userId, ReceivedPostReactionDto postReactionDto) {
@@ -66,8 +65,8 @@ public class PostsService {
             postReaction.isLike = postReactionDto.isLike;
             postReaction.user = usersRepository.findById(userId).get();
             postReaction.post = postsCrudRepository.findById(postReactionDto.postId).get();
-            var result =postReactionsRepository.save(postReaction);
-            return Optional.of(modelMapper.map(result, ResponcePostReactionDto.class));
+            var result = postReactionsRepository.save(postReaction);
+            return Optional.of(PostMapper.MAPPER.reactionToPostReactionDto(result));
 //        }
     }
 }
