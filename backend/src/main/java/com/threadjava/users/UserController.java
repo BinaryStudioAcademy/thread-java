@@ -1,6 +1,6 @@
 package com.threadjava.users;
 
-import com.threadjava.users.dto.UserShortDto;
+import com.threadjava.users.dto.UserDetailsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +14,8 @@ public class UserController {
     @Autowired
     private UsersService userDetailsService;
 
-    @GetMapping("/user")
-    public UserShortDto getUser() {
+    @GetMapping
+    public UserDetailsDto getUser() {
         return userDetailsService.getUserById(getUserId());
     }
 }

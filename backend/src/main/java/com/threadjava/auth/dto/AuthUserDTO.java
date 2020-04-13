@@ -1,6 +1,6 @@
 package com.threadjava.auth.dto;
 
-import com.threadjava.users.dto.UserShortDto;
+import com.threadjava.users.dto.UserDetailsDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,5 +8,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class AuthUserDTO {
     private String token;
-    private UserShortDto user;
+    private UserDetailsDto user;
 }

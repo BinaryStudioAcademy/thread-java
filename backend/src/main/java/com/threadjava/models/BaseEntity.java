@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
+@Data
 @MappedSuperclass
 public class BaseEntity {
 
@@ -16,13 +17,13 @@ public class BaseEntity {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false)
-    @Getter @Setter public UUID id;
+    private UUID id;
 
     @Column(name = "`timestamp`")
     @CreationTimestamp
-    @Getter @Setter public Date createdAt;
+    private Date createdAt;
 
     @Column(name = "updated_on")
     @UpdateTimestamp
-    @Getter @Setter public Date updatedAt;
+    private Date updatedAt;
 }

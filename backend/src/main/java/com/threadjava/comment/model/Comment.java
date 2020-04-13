@@ -18,13 +18,13 @@ public class Comment extends BaseEntity {
     @JoinColumn(name = "users_id")
     private User user;
 
-    @Column(name = "users_id")
-    private UUID userId;
+//    @Column(name = "users_id")
+//    private UUID userId;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "posts_id")
     private Post post;
 
-    @Column(name = "posts_id")
-    private UUID postId;
+//    @Column(name = "posts_id")
+//    private UUID postId;
 }
