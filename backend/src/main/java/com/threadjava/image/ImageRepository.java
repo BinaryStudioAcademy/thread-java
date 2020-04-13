@@ -1,6 +1,6 @@
 package com.threadjava.image;
 
-import com.threadjava.models.Image;
+import com.threadjava.image.model.Image;
 import org.springframework.data.repository.CrudRepository;
 import java.util.UUID;
 

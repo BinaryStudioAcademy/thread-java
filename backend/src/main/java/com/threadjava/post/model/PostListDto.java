@@ -1,6 +1,6 @@
 package com.threadjava.post.model;
 
-import com.threadjava.image.ImageDto;
+import com.threadjava.image.dto.ImageDto;
 import com.threadjava.users.dto.UserShortDto;
 import lombok.*;
 

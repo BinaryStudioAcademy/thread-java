@@ -1,6 +1,6 @@
 package com.threadjava.post.model;
 
-import com.threadjava.models.Image;
+import com.threadjava.image.model.Image;
 import com.threadjava.users.model.User;
 import lombok.*;
 import java.util.Date;

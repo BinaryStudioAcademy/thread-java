@@ -1,6 +1,6 @@
 package com.threadjava.image;
 
-import com.threadjava.models.Image;
+import com.threadjava.image.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

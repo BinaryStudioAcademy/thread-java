@@ -2,7 +2,8 @@ package com.threadjava.image;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.threadjava.models.Image;
+import com.threadjava.image.dto.ImgurResponce;
+import com.threadjava.image.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -26,8 +27,8 @@ public class ImageService {
     public Image upload(MultipartFile file) throws IOException {
         var result = this.uploadFile(file.getBytes());
         var image = new Image();
-        image.link = result.data.link;
-        image.deleteHash = result.data.deletehash;
+        image.setLink(result.data.link);
+        image.setDeleteHash(result.data.deletehash);
         return imageRepository.save(image);
     }
 

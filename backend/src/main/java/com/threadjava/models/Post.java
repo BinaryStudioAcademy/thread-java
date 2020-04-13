@@ -1,6 +1,7 @@
 package com.threadjava.models;
 
 import com.threadjava.comment.model.Comment;
+import com.threadjava.image.model.Image;
 import com.threadjava.users.model.User;
 import lombok.*;
 import javax.persistence.*;

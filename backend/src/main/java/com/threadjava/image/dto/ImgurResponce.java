@@ -1,4 +1,4 @@
-package com.threadjava.image;
+package com.threadjava.image.dto;
 
 import lombok.Getter;
 import lombok.Setter;
