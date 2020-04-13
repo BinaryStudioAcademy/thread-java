@@ -1,5 +1,6 @@
-package com.threadjava.auth;
+package com.threadjava.config;
 
+import com.threadjava.auth.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,12 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.threadjava.auth.SecurityConstants.HEADER_STRING;
-import static com.threadjava.auth.SecurityConstants.TOKEN_PREFIX;
+import static com.threadjava.config.SecurityConstants.HEADER_STRING;
+import static com.threadjava.config.SecurityConstants.TOKEN_PREFIX;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
-
     @Autowired
     private TokenService tokenService;
 

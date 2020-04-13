@@ -1,4 +1,4 @@
-package com.threadjava.auth;
+package com.threadjava.config;
 
 import com.threadjava.users.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import static com.threadjava.auth.SecurityConstants.ROUTES_WHITE_LIST;
+import static com.threadjava.config.SecurityConstants.ROUTES_WHITE_LIST;
 
 
 @EnableWebSecurity
@@ -28,16 +28,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-               .cors().and()
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers(ROUTES_WHITE_LIST)
-                .permitAll()
-                .anyRequest().authenticated().and()
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
-//                .exceptionHandling().and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            .cors().and()
+            .csrf().disable()
+            .authorizeRequests()
+            .antMatchers(ROUTES_WHITE_LIST)
+            .permitAll()
+            .anyRequest().authenticated().and()
+            .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     @Override

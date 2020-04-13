@@ -1,7 +1,7 @@
 package com.threadjava.comment;
 
-import com.threadjava.comment.model.CommentDetailsDto;
-import com.threadjava.comment.model.CommentSaveDto;
+import com.threadjava.comment.dto.CommentDetailsDto;
+import com.threadjava.comment.dto.CommentSaveDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.UUID;

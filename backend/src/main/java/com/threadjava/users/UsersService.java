@@ -1,7 +1,8 @@
 package com.threadjava.users;
 
 import com.threadjava.auth.model.AuthUser;
-import com.threadjava.models.User;
+import com.threadjava.users.dto.UserShortDto;
+import com.threadjava.users.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,17 +16,17 @@ public class UsersService implements UserDetailsService {
 
     @Override
     public AuthUser loadUserByUsername(String email) throws UsernameNotFoundException {
-        var applicationUser = usersRepository.findByEmail(email);
-        if (applicationUser == null) {
-            throw new UsernameNotFoundException(email);
-        }
-        return new AuthUser(applicationUser.id, applicationUser.email, applicationUser.password);
+        return usersRepository
+                .findByEmail(email)
+                .map(user -> new AuthUser(user.id, user.email, user.password))
+                .orElseThrow(() -> new UsernameNotFoundException(email));
     }
 
-    public User getUserById(UUID id) {
-        var user = usersRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("No user found with username"));
-        user.password = null;
-        return user;
+    public UserShortDto getUserById(UUID id) {
+        return usersRepository
+                .findById(id)
+                .map(user -> new UserShortDto(user.id, user.username))
+                .orElseThrow(() -> new UsernameNotFoundException("No user found with username"));
     }
 
     public void save(User user) {

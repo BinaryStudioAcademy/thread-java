@@ -1,4 +1,4 @@
-package com.threadjava.auth;
+package com.threadjava.config;
 
 public class SecurityConstants {
     public static final long EXPIRATION_TIME = 864_000_000; // 1 day

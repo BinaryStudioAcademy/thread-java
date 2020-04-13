@@ -1,22 +1,25 @@
-package com.threadjava.models;
+package com.threadjava.users.model;
 
+import com.threadjava.models.BaseEntity;
+import com.threadjava.models.Image;
 import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "users")
 public class User extends BaseEntity {
 
     @Column(name = "email", unique=true)
-    @Getter @Setter public String email;
+    private String email;
 
     @Column(name = "username")
-    @Getter @Setter public String username;
+    private String username;
 
     @Column(name = "password")
-    @Getter @Setter public String password;
+    private String password;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "avatars_id")
-    @Getter @Setter public Image avatar;
+    private Image avatar;
 }

@@ -1,7 +1,7 @@
 package com.threadjava.post.model;
 
 import com.threadjava.models.Image;
-import com.threadjava.models.User;
+import com.threadjava.users.model.User;
 import lombok.*;
 import java.util.Date;
 import java.util.UUID;

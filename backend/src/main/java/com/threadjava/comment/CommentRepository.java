@@ -1,6 +1,6 @@
 package com.threadjava.comment;
 
-import com.threadjava.models.Comment;
+import com.threadjava.comment.model.Comment;
 import org.springframework.data.repository.CrudRepository;
 import java.util.UUID;
 

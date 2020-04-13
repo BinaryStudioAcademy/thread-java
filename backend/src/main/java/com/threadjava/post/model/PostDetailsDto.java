@@ -1,9 +1,9 @@
 package com.threadjava.post.model;
 
-import com.threadjava.comment.model.CommentDetailsDto;
+import com.threadjava.comment.dto.CommentDetailsDto;
 import com.threadjava.image.ImageDto;
 import com.threadjava.postReactions.PostReactionDto;
-import com.threadjava.users.model.UserShortDto;
+import com.threadjava.users.dto.UserShortDto;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.ArrayList;

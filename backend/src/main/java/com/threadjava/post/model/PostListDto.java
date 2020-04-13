@@ -1,7 +1,7 @@
 package com.threadjava.post.model;
 
 import com.threadjava.image.ImageDto;
-import com.threadjava.users.model.UserShortDto;
+import com.threadjava.users.dto.UserShortDto;
 import lombok.*;
 
 import java.util.Date;

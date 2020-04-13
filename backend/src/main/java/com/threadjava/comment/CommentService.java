@@ -1,8 +1,8 @@
 package com.threadjava.comment;
 
-import com.threadjava.comment.model.CommentDetailsDto;
-import com.threadjava.comment.model.CommentSaveDto;
-import com.threadjava.models.Comment;
+import com.threadjava.comment.dto.CommentDetailsDto;
+import com.threadjava.comment.dto.CommentSaveDto;
+import com.threadjava.comment.model.Comment;
 import com.threadjava.post.PostsRepository;
 import com.threadjava.users.UsersRepository;
 import org.modelmapper.ModelMapper;
@@ -21,15 +21,15 @@ public class CommentService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public CommentDetailsDto getPostById(UUID id){
+    public CommentDetailsDto getPostById(UUID id) {
         var comment = commentRepository.findById(id).orElseThrow();
         return modelMapper.map(comment, CommentDetailsDto.class);
     }
 
-    public CommentDetailsDto create(CommentSaveDto commentDto, UUID userId){
+    public CommentDetailsDto create(CommentSaveDto commentDto, UUID userId) {
         Comment comment = modelMapper.map(commentDto, Comment.class);
-        comment.user =  usersRepository.findById(userId).get();
-        comment.post = postsRepository.findById(commentDto.postId).get();
+        comment.setUserId(userId);
+        comment.setPostId(commentDto.getPostId());
         Comment postCreated = commentRepository.save(comment);
         return modelMapper.map(postCreated, CommentDetailsDto.class);
     }

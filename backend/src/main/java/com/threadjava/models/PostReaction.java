@@ -1,5 +1,6 @@
 package com.threadjava.models;
 
+import com.threadjava.users.model.User;
 import lombok.*;
 import javax.persistence.*;
 

@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
 
-import static com.threadjava.auth.SecurityConstants.EXPIRATION_TIME;
+import static com.threadjava.config.SecurityConstants.EXPIRATION_TIME;
 
 @Service
 public class TokenService {
@@ -48,7 +48,7 @@ public class TokenService {
 
     public String generateToken(AuthUser userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.id);
+        return createToken(claims, userDetails.getId());
     }
 
     private String createToken(Map<String, Object> claims, UUID subject) {
@@ -61,11 +61,6 @@ public class TokenService {
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
-
-//    public Boolean validateToken(String token, AuthUser userDetails) {
-//        final String userid = extractUserid(token);
-//        return (userid.equals(userid) && !isTokenExpired(token));
-//    }
 
     static public UUID getUserId(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

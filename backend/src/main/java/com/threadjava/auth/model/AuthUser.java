@@ -19,5 +19,5 @@ public class AuthUser extends User {
         this.id = id;
     }
 
-    @Getter @Setter public UUID id;
+    @Getter @Setter private UUID id;
 }

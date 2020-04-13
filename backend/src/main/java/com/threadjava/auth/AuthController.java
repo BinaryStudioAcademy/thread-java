@@ -1,12 +1,11 @@
 package com.threadjava.auth;
 
-import com.threadjava.auth.model.AuthUserDTO;
-import com.threadjava.auth.model.UserLoginDTO;
-import com.threadjava.models.User;
+import com.threadjava.auth.dto.AuthUserDTO;
+import com.threadjava.auth.dto.UserLoginDTO;
+import com.threadjava.users.model.User;
 import com.threadjava.users.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import static com.threadjava.auth.TokenService.getUserId;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,9 +25,5 @@ public class AuthController {
         return authService.login(user);
     }
 
-    @GetMapping("/user")
-    public User getUser() {
-        var user = userDetailsService.getUserById(getUserId());
-        return user;
-    }
+
 }
