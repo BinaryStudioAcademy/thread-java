@@ -33,3 +33,6 @@ auth0.secret-key:eyJhbGciOiJIUzI1NiJ9eyJzdWIiOiJKb2UifQ1KP0SsvENi7Uz1oQc07aXTL7k
 # IMGUR_SECRET - has to be changed to a real key from Imgur
 imgur.id = imgurclientid
 imgur.secret = imgurclientsecret
+
+
+spring.jackson.serialization.fail-on-empty-beans=false
