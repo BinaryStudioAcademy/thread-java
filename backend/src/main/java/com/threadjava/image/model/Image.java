@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper=true)
 @Table(name = "image")
 public class Image extends BaseEntity {
 

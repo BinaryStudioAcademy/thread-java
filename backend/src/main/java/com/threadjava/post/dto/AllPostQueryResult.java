@@ -1,4 +1,5 @@
-package com.threadjava.post.model;
+package com.threadjava.post.dto;
+
 
 import com.threadjava.image.model.Image;
 import com.threadjava.users.model.User;
@@ -9,7 +10,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostListModel {
+public class AllPostQueryResult {
     public UUID id;
     public String body;
     public long likeCount;

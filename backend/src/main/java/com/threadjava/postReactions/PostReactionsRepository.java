@@ -1,10 +1,8 @@
 package com.threadjava.postReactions;
 
-import com.threadjava.models.PostReaction;
-import org.springframework.data.jpa.repository.Query;
+import com.threadjava.postReactions.model.PostReaction;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-import java.util.Optional;
+
 import java.util.UUID;
 
 public interface PostReactionsRepository extends CrudRepository<PostReaction, UUID> {

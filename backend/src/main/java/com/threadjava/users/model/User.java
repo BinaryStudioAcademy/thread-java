@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper=true)
 @Table(name = "users")
 public class User extends BaseEntity {
 

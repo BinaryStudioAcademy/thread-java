@@ -1,7 +1,7 @@
 package com.threadjava.post;
 
 
-import com.threadjava.post.model.*;
+import com.threadjava.post.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +32,9 @@ public class PostsController {
     }
 
     @PostMapping
-    public PostDetailsDto post(@RequestBody PostDetailsDto postDto) {
-        var item = postsService.create(postDto, getUserId());
+    public PostCreationResponseDto post(@RequestBody PostCreationDto postDto) {
+        postDto.setUserId(getUserId());
+        var item = postsService.create(postDto);
         template.convertAndSend("/topic/new_post", item);
         return item;
     }
@@ -42,7 +43,7 @@ public class PostsController {
     public Optional<ResponcePostReactionDto> setReaction(@RequestBody ReceivedPostReactionDto postReaction){
         var reaction = postsService.setReaction(getUserId(), postReaction);
 
-        if (reaction.isPresent() && reaction.get().userId != getUserId()) {
+        if (reaction.isPresent() && reaction.get().getUserId() != getUserId()) {
             // notify a user if someone (not himself) liked his post
             template.convertAndSend("/topic/like", "Your post was liked!");
         }

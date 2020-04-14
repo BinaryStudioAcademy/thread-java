@@ -1,23 +1,25 @@
-package com.threadjava.models;
+package com.threadjava.postReactions.model;
 
+import com.threadjava.models.BaseEntity;
+import com.threadjava.post.model.Post;
 import com.threadjava.users.model.User;
 import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper=true)
 @Table(name = "post_reaction")
 public class PostReaction extends BaseEntity {
 
     @Column(name = "isLike")
-    @Getter @Setter public Boolean isLike;
+    private Boolean isLike;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "users_id")
-    @Getter @Setter public User user;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "posts_id")
-    @Getter @Setter public Post post;
+    private Post post;
 }

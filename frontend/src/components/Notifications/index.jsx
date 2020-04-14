@@ -34,7 +34,7 @@ class Notifications extends React.Component {
         this.stompClient.subscribe('/topic/new_post', (message) => {
             let post = JSON.parse(message.body);
             console.log('message from server2: ' + post);
-            if (post.user.id !== userId) {
+            if (post.userId !== userId) {
                 this.props.applyPost(post.id);
             }
         });
