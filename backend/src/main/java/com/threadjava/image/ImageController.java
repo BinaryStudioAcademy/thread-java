@@ -1,6 +1,6 @@
 package com.threadjava.image;
 
-import com.threadjava.image.model.Image;
+import com.threadjava.image.dto.ImageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +14,7 @@ public class ImageController {
     ImageService imageService;
 
     @PostMapping
-    public Image post(@RequestParam("image") MultipartFile file) throws IOException {
+    public ImageDto post(@RequestParam("image") MultipartFile file) throws IOException {
         return imageService.upload(file);
     }
 }

@@ -4,6 +4,8 @@ import com.threadjava.image.ImageMapper;
 import com.threadjava.post.dto.*;
 import com.threadjava.post.model.Post;
 import com.threadjava.postReactions.model.PostReaction;
+import com.threadjava.users.UserMapper;
+import com.threadjava.users.model.User;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
@@ -42,4 +44,7 @@ public abstract class PostMapper {
     public abstract ResponcePostReactionDto reactionToPostReactionDto(PostReaction postReaction);
 
     public abstract PostListDto postListToPostListDto(PostListQueryResult model);
+
+    @Mapping(source = "avatar", target = "image")
+    public abstract PostUserDto postUserToPostUserDto(User model);
 }

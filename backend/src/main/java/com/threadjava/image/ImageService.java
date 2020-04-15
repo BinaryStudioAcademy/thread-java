@@ -2,6 +2,7 @@ package com.threadjava.image;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.threadjava.image.dto.ImageDto;
 import com.threadjava.image.dto.ImgurResponce;
 import com.threadjava.image.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,13 @@ public class ImageService {
     @Autowired
     ImageRepository imageRepository;
 
-    public Image upload(MultipartFile file) throws IOException {
+    public ImageDto upload(MultipartFile file) throws IOException {
         var result = this.uploadFile(file.getBytes());
         var image = new Image();
         image.setLink(result.data.link);
         image.setDeleteHash(result.data.deletehash);
-        return imageRepository.save(image);
+        var imageEntity = imageRepository.save(image);
+        return ImageMapper.MAPPER.imageToImageDto(imageEntity);
     }
 
     private ImgurResponce uploadFile(byte[] bytes) throws JsonProcessingException {

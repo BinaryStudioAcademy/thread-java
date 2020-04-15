@@ -1,5 +1,6 @@
 package com.threadjava.auth;
 
+import com.threadjava.auth.dto.UserRegisterDto;
 import com.threadjava.auth.model.AuthUser;
 import com.threadjava.auth.dto.AuthUserDTO;
 import com.threadjava.auth.dto.UserLoginDTO;
@@ -24,7 +25,8 @@ public class AuthService {
     @Autowired
     private UsersService userDetailsService;
 
-    public AuthUserDTO register(User user) throws Exception {
+    public AuthUserDTO register(UserRegisterDto userDto) throws Exception {
+        User user = AuthUserMapper.MAPPER.userRegisterDtoToUser(userDto);
         var loginDTO = new UserLoginDTO(user.getEmail(), user.getPassword());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDetailsService.save(user);
