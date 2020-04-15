@@ -8,4 +8,5 @@ import java.util.UUID;
 public class CommentSaveDto {
     private String body;
     private UUID postId;
+    private UUID userId;
 }

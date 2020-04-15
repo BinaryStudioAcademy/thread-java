@@ -10,4 +10,5 @@ public class CommentDetailsDto {
     private UUID id;
     private String body;
     private UserShortDto user;
+    private UUID postId;
 }

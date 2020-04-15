@@ -13,6 +13,8 @@ public abstract class PostMapper {
 
     public static final PostMapper MAPPER = Mappers.getMapper( PostMapper.class );
 
+    public abstract PostDetailsDto postToPostDetailsDto(PostDetailsQueryResult post);
+
     public abstract PostDetailsDto postToPostDetailsDto(Post post);
 
     @Mapping(source = "user.id", target = "userId")
@@ -39,5 +41,5 @@ public abstract class PostMapper {
     @Mapping(source = "user.id", target = "userId")
     public abstract ResponcePostReactionDto reactionToPostReactionDto(PostReaction postReaction);
 
-    public abstract PostListDto postListToPostListDto(AllPostQueryResult model);
+    public abstract PostListDto postListToPostListDto(PostListQueryResult model);
 }

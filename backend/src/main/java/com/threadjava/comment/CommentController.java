@@ -15,11 +15,12 @@ public class CommentController {
 
     @GetMapping("/{id}")
     public CommentDetailsDto get(@PathVariable UUID id) {
-        return commentService.getPostById(id);
+        return commentService.getCommentById(id);
     }
 
     @PostMapping
     public CommentDetailsDto post(@RequestBody CommentSaveDto commentDto) {
-        return commentService.create(commentDto, getUserId());
+        commentDto.setUserId(getUserId());
+        return commentService.create(commentDto);
     }
 }

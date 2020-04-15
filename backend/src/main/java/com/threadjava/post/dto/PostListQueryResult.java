@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AllPostQueryResult {
+public class PostListQueryResult {
     public UUID id;
     public String body;
     public long likeCount;
