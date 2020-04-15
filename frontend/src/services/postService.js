@@ -30,7 +30,7 @@ export const getPost = async (id) => {
 
 export const likePost = async (postId) => {
     const response = await callWebApi({
-        endpoint: '/api/posts/react',
+        endpoint: '/api/postreaction',
         type: 'PUT',
         request: {
             postId,

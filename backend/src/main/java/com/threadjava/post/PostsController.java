@@ -38,15 +38,4 @@ public class PostsController {
         template.convertAndSend("/topic/new_post", item);
         return item;
     }
-
-    @PutMapping("/react")
-    public Optional<ResponcePostReactionDto> setReaction(@RequestBody ReceivedPostReactionDto postReaction){
-        var reaction = postsService.setReaction(getUserId(), postReaction);
-
-        if (reaction.isPresent() && reaction.get().getUserId() != getUserId()) {
-            // notify a user if someone (not himself) liked his post
-            template.convertAndSend("/topic/like", "Your post was liked!");
-        }
-        return reaction;
-    }
 }
