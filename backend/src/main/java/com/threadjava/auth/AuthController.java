@@ -22,6 +22,4 @@ public class AuthController {
     public AuthUserDTO login(@RequestBody UserLoginDTO user) throws Exception {
         return authService.login(user);
     }
-
-
 }

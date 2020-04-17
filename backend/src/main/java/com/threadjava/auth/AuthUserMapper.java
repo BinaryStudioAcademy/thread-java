@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface AuthUserMapper {
-    AuthUserMapper MAPPER = Mappers.getMapper( AuthUserMapper.class );
+    AuthUserMapper MAPPER = Mappers.getMapper(AuthUserMapper.class);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)

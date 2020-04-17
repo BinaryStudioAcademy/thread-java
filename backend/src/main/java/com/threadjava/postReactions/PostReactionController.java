@@ -20,7 +20,6 @@ public class PostReactionController {
     @Autowired
     private SimpMessagingTemplate template;
 
-
     @PutMapping
     public Optional<ResponsePostReactionDto> setReaction(@RequestBody ReceivedPostReactionDto postReaction){
         postReaction.setUserId(getUserId());

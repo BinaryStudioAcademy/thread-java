@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,26 +34,22 @@ public class ImageService {
     }
 
     private ImgurResponce uploadFile(byte[] bytes) throws JsonProcessingException {
-        HttpHeaders headers = new HttpHeaders();
+        var headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         headers.add("Authorization", "Client-ID " + IMGUR_ID);
 
-        MultiValueMap<String, Object> body
-                = new LinkedMultiValueMap<>();
+        var body = new LinkedMultiValueMap<>();
         body.add("image", bytes);
 
-        HttpEntity<MultiValueMap<String, Object>> requestEntity
-                = new HttpEntity<>(body, headers);
+        var requestEntity = new HttpEntity<>(body, headers);
 
-        String serverUrl = "https://api.imgur.com/3/upload";
+        var serverUrl = "https://api.imgur.com/3/upload";
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate
-                .postForEntity(serverUrl, requestEntity, String.class);
+        var restTemplate = new RestTemplate();
+        var response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
         var json = response.getBody();
-        ObjectMapper mapper = new ObjectMapper();
-        ImgurResponce parser = mapper.readValue(json, ImgurResponce.class);
-        return parser;
+        var mapper = new ObjectMapper();
+        return mapper.readValue(json, ImgurResponce.class);
     }
 
 

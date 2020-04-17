@@ -10,7 +10,6 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper=true)
 @Table(name = "users")
 public class User extends BaseEntity {
-
     @Column(name = "email", unique=true)
     private String email;
 

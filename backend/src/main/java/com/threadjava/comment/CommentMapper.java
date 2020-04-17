@@ -9,8 +9,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface CommentMapper {
-
-    CommentMapper MAPPER = Mappers.getMapper( CommentMapper.class );
+    CommentMapper MAPPER = Mappers.getMapper(CommentMapper.class);
 
     @Mapping(source = "post.id", target = "postId")
     CommentDetailsDto commentToCommentDetailsDto(Comment comment);

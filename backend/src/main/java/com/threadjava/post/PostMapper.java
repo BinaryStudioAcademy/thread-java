@@ -10,8 +10,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = { ImageMapper.class })
 public abstract class PostMapper {
-
-    public static final PostMapper MAPPER = Mappers.getMapper( PostMapper.class );
+    public static final PostMapper MAPPER = Mappers.getMapper(PostMapper.class);
 
     public abstract PostDetailsDto postToPostDetailsDto(PostDetailsQueryResult post);
 
