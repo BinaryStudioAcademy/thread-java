@@ -18,7 +18,6 @@ import static com.threadjava.config.SecurityConstants.ROUTES_WHITE_LIST;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-//@Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private UsersService myUserDetailsService;

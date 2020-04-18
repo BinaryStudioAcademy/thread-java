@@ -19,16 +19,14 @@ import java.io.IOException;
 public class ImageService {
     @Value(value = "${imgur.id}")
     private String IMGUR_ID;
-    @Value(value = "${imgur.secret}")
-    private String IMGUR_SECRET;
     @Autowired
     ImageRepository imageRepository;
 
     public ImageDto upload(MultipartFile file) throws IOException {
         var result = this.uploadFile(file.getBytes());
         var image = new Image();
-        image.setLink(result.data.link);
-        image.setDeleteHash(result.data.deletehash);
+        image.setLink(result.getData().getLink());
+        image.setDeleteHash(result.getData().getDeletehash());
         var imageEntity = imageRepository.save(image);
         return ImageMapper.MAPPER.imageToImageDto(imageEntity);
     }
