@@ -1,6 +1,6 @@
 package com.threadjava.users.model;
 
-import com.threadjava.models.BaseEntity;
+import com.threadjava.db.BaseEntity;
 import com.threadjava.image.model.Image;
 import lombok.*;
 import javax.persistence.*;

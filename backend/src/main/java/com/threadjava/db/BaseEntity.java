@@ -1,10 +1,9 @@
-package com.threadjava.models;
+package com.threadjava.db;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;

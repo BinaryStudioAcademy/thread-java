@@ -1,6 +1,6 @@
 package com.threadjava.postReactions.model;
 
-import com.threadjava.models.BaseEntity;
+import com.threadjava.db.BaseEntity;
 import com.threadjava.post.model.Post;
 import com.threadjava.users.model.User;
 import lombok.*;

@@ -1,6 +1,6 @@
 package com.threadjava.comment.model;
 
-import com.threadjava.models.BaseEntity;
+import com.threadjava.db.BaseEntity;
 import com.threadjava.post.model.Post;
 import com.threadjava.users.model.User;
 import lombok.*;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "comment")
 public class Comment extends BaseEntity {
-    @Column(name = "body")
+    @Column(name = "body", columnDefinition="TEXT")
     private String body;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)

@@ -1,6 +1,6 @@
 package com.threadjava.image.model;
 
-import com.threadjava.models.BaseEntity;
+import com.threadjava.db.BaseEntity;
 import lombok.*;
 import javax.persistence.*;
 

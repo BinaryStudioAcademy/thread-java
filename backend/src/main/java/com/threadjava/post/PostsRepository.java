@@ -4,15 +4,15 @@ import com.threadjava.post.dto.PostDetailsQueryResult;
 import com.threadjava.post.model.Post;
 import com.threadjava.post.dto.PostListQueryResult;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface PostsRepository extends CrudRepository<Post, UUID> {
+public interface PostsRepository extends JpaRepository<Post, UUID> {
 
     @Query("SELECT new com.threadjava.post.dto.PostListQueryResult(p.id, p.body, " +
             "(SELECT COALESCE(SUM(CASE WHEN pr.isLike = TRUE THEN 1 ELSE 0 END), 0) FROM p.reactions pr WHERE pr.post = p), " +

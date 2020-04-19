@@ -2,7 +2,7 @@ package com.threadjava.post.model;
 
 import com.threadjava.comment.model.Comment;
 import com.threadjava.image.model.Image;
-import com.threadjava.models.BaseEntity;
+import com.threadjava.db.BaseEntity;
 import com.threadjava.postReactions.model.PostReaction;
 import com.threadjava.users.model.User;
 import lombok.*;
@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "post")
 public class Post extends BaseEntity {
 
-    @Column(name = "body")
+    @Column(name = "body", columnDefinition="TEXT")
     private String body;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
