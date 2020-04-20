@@ -61,7 +61,7 @@ public class DatabaseSeeder {
     }
 
     private void seedUsersTable(){
-        List<Image> userImages = jdbcTemplate.query("SELECT * FROM image  WHERE link IN ("+ imagesToString(getUserImages()) +")", DatabaseSeeder::mapRowImage);
+        List<Image> userImages = jdbcTemplate.query("SELECT * FROM images WHERE link IN ("+ imagesToString(getUserImages()) +")", DatabaseSeeder::mapRowImage);
 
         var user1 = new User();
         user1.setEmail("demo@demo.com");
@@ -93,7 +93,7 @@ public class DatabaseSeeder {
 
     private void seedPostsTable() {
         var randomize = new Random();
-        List<Image> postImages = jdbcTemplate.query("SELECT * FROM image  WHERE link IN ("+ imagesToString(getPostImages()) +")", DatabaseSeeder::mapRowImage);
+        List<Image> postImages = jdbcTemplate.query("SELECT * FROM images WHERE link IN ("+ imagesToString(getPostImages()) +")", DatabaseSeeder::mapRowImage);
         var users = usersRepository.findAll();
 
         String[] postBodies = { "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",

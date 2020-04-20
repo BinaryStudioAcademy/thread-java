@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -29,7 +28,7 @@ public interface PostsRepository extends JpaRepository<Post, UUID> {
             "(SELECT COALESCE(SUM(CASE WHEN pr.isLike = TRUE THEN 1 ELSE 0 END), 0) FROM p.reactions pr WHERE pr.post = p), " +
             "(SELECT COALESCE(SUM(CASE WHEN pr.isLike = FALSE THEN 1 ELSE 0 END), 0) FROM p.reactions pr WHERE pr.post = p), " +
             "(SELECT COUNT(*) FROM p.comments), " +
-            "p.createdAt, p.updatedAt, i, p.user, p.comments) " +
+            "p.createdAt, p.updatedAt, i, p.user) " +
             "FROM Post p " +
             "LEFT JOIN p.image i " +
             "WHERE p.id = :id")

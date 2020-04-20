@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=true)
-@Table(name = "image")
+@Table(name = "images")
 public class Image extends BaseEntity {
 
     @Column(name = "link", nullable = false)

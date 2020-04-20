@@ -20,6 +20,6 @@ public class User extends BaseEntity {
     private String password;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "avatars_id")
+    @JoinColumn(name = "avatar_id")
     private Image avatar;
 }

@@ -10,16 +10,16 @@ import javax.persistence.*;
 @Data
 @EqualsAndHashCode(callSuper=true)
 @Entity
-@Table(name = "comment")
+@Table(name = "comments")
 public class Comment extends BaseEntity {
     @Column(name = "body", columnDefinition="TEXT")
     private String body;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "posts_id")
+    @JoinColumn(name = "post_id")
     private Post post;
 }

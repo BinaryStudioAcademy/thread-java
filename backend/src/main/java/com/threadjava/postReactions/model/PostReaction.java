@@ -9,17 +9,17 @@ import javax.persistence.*;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=true)
-@Table(name = "post_reaction")
+@Table(name = "post_reactions")
 public class PostReaction extends BaseEntity {
 
     @Column(name = "isLike")
     private Boolean isLike;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "posts_id")
+    @JoinColumn(name = "post_id")
     private Post post;
 }

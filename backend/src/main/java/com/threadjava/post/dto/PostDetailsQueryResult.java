@@ -1,6 +1,5 @@
 package com.threadjava.post.dto;
 
-import com.threadjava.comment.model.Comment;
 import com.threadjava.image.model.Image;
 import com.threadjava.users.model.User;
 import lombok.AllArgsConstructor;
@@ -21,5 +20,4 @@ public class PostDetailsQueryResult {
     private Date updatedAt;
     private Image image;
     private User user;
-    private Collection<Comment> comments = new ArrayList<>();
 }

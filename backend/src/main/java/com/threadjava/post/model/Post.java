@@ -13,18 +13,18 @@ import java.util.List;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=true)
-@Table(name = "post")
+@Table(name = "posts")
 public class Post extends BaseEntity {
 
     @Column(name = "body", columnDefinition="TEXT")
     private String body;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "images_id")
+    @JoinColumn(name = "image_id")
     private Image image;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

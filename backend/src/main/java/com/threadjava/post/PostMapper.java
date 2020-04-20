@@ -1,5 +1,6 @@
 package com.threadjava.post;
 
+import com.threadjava.comment.model.Comment;
 import com.threadjava.image.ImageMapper;
 import com.threadjava.post.dto.*;
 import com.threadjava.post.model.Post;
@@ -12,9 +13,8 @@ import org.mapstruct.factory.Mappers;
 public abstract class PostMapper {
     public static final PostMapper MAPPER = Mappers.getMapper(PostMapper.class);
 
+    @Mapping(target = "comments", ignore = true)
     public abstract PostDetailsDto postToPostDetailsDto(PostDetailsQueryResult post);
-
-    public abstract PostDetailsDto postToPostDetailsDto(Post post);
 
     @Mapping(source = "user.id", target = "userId")
     public abstract PostCreationResponseDto postToPostCreationResponseDto(Post post);
@@ -40,4 +40,6 @@ public abstract class PostMapper {
 
     @Mapping(source = "avatar", target = "image")
     public abstract PostUserDto postUserToPostUserDto(User model);
+
+    public abstract PostCommentDto commentToCommentDto(Comment comment);
 }

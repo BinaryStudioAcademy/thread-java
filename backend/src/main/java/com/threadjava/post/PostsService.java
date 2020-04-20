@@ -1,5 +1,6 @@
 package com.threadjava.post;
 
+import com.threadjava.comment.CommentRepository;
 import com.threadjava.post.dto.*;
 import com.threadjava.post.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import java.util.stream.Collectors;
 public class PostsService {
     @Autowired
     private PostsRepository postsCrudRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
     public List<PostListDto> getAllPosts(Integer from, Integer count, UUID userId) {
         var pageable = PageRequest.of(from / count, count);
@@ -24,9 +27,17 @@ public class PostsService {
     }
 
     public PostDetailsDto getPostById(UUID id) {
-        return postsCrudRepository.findById(id)
+        var post = postsCrudRepository.findPostById(id)
                 .map(PostMapper.MAPPER::postToPostDetailsDto)
                 .orElseThrow();
+
+        var comments = commentRepository.findAllByPostId(id)
+                .stream()
+                .map(PostMapper.MAPPER::commentToCommentDto)
+                .collect(Collectors.toList());
+        post.setComments(comments);
+
+        return post;
     }
 
     public PostCreationResponseDto create(PostCreationDto postDto) {
