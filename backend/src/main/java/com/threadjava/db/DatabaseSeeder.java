@@ -194,26 +194,29 @@ public class DatabaseSeeder {
 
     private List<Image> getUserImages(){
         var image1 = new Image();
-        image1.setLink("https://i.imgur.com/dJbN8ib.jpg");
-        image1.setDeleteHash("HVkRkOtyNHVIyp3");
+        image1.setLink("https://i.imgur.com/hIjmHms.jpg");
+        image1.setDeleteHash("lajdyJs0Tev0joE");
         var image2 = new Image();
-        image2.setLink("https://i.imgur.com/3AKJHOK.jpg");
-        image2.setDeleteHash("iO2T1f6HuB8xjAU");
+        image2.setLink("https://i.imgur.com/Y8DGAuj.jpg");
+        image2.setDeleteHash("1ifCzLIPTjCXurr");
         var image3 = new Image();
-        image3.setLink("https://i.imgur.com/kX8OeH3.jpg");
-        image3.setDeleteHash("SEGM6QPylAbRWAA");
+        image3.setLink("https://i.imgur.com/hG4Th4U.jpg");
+        image3.setDeleteHash("Incmabo8F8nnDG7");
         var image4 = new Image();
-        image4.setLink("https://i.imgur.com/aqZiLzq.jpg");
-        image4.setDeleteHash("jHIj5YNdNOQ3FBj");
+        image4.setLink("https://i.imgur.com/dKDpaU5.jpg");
+        image4.setDeleteHash("6ZZpdY8vVRarUx8");
 
         return  List.of(image1, image2, image3, image4 );
     }
 
     private List<Image> getPostImages(){
         var image1 = new Image();
-        image1.setLink("https://i.imgur.com/jmxuL3D.jpg");
-        image1.setDeleteHash("qFrQiMT4iTHJTBU");
-        return  List.of(image1 );
+        image1.setLink("https://i.imgur.com/OE6SAt3.jpg");
+        image1.setDeleteHash("ImeeDLLWrl65Wpv");
+        var image2 = new Image();
+        image2.setLink("https://i.imgur.com/jJ8OG5D.jpg");
+        image2.setDeleteHash("hKCqBdz2pqcLBk3");
+        return  List.of(image1, image2);
     }
 
     private String imagesToString(List<Image>  images){
