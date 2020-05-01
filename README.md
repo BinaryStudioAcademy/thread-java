@@ -13,27 +13,27 @@
 Здесь перечислены основные фреймворки и библиотеки, используемые в проекте. Полный список используемых технологий для каждой части проекта находится в файлах package.json и build.gradle в папках frontend и backend.
 
 #### Common
-1. ES2018
-2. [Git](https://git-scm.com/book/ru/v1/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git "Git")
-3. [REST API](https://www.restapitutorial.com/lessons/restquicktips.html "REST API")
-4. [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token "JWT")
-5. [WebSocket](https://en.wikipedia.org/wiki/WebSocket "WebSocket")
-6. [npm](https://en.wikipedia.org/wiki/Npm_(software))
-7. [ESLint](https://eslint.org/docs/user-guide/getting-started "ESLint")
+1. [Git](https://git-scm.com/book/ru/v1/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git "Git")
+1. [REST API](https://www.restapitutorial.com/lessons/restquicktips.html "REST API")
+1. [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token "JWT")
+1. [WebSocket](https://en.wikipedia.org/wiki/WebSocket "WebSocket")
 
 #### Frontend
+1. ES2018
 1. [React](https://reactjs.org/docs/getting-started.html "React")
-2. [React Redux](https://redux.js.org/introduction/getting-started "React Redux")
-3. [React Semantic UI](https://react.semantic-ui.com/ "React Semantic UI")
-4. [Moment.js](https://momentjs.com/ "Moment.js")
-5. [validator.js](https://www.npmjs.com/package/validator "validator.js")
-6. [history](https://www.npmjs.com/package/history "history")
+1. [React Redux](https://redux.js.org/introduction/getting-started "React Redux")
+1. [React Semantic UI](https://react.semantic-ui.com/ "React Semantic UI")
+1. [Moment.js](https://momentjs.com/ "Moment.js")
+1. [validator.js](https://www.npmjs.com/package/validator "validator.js")
+1. [npm](https://en.wikipedia.org/wiki/Npm_(software))
+1. [ESLint](https://eslint.org/docs/user-guide/getting-started "ESLint")
 
 #### Backend
 1. [spring](https://spring.io/ "spring")
 1. [lombok](https://projectlombok.org/ "lombok")
 1. [Spring Data JPA](https://spring.io/projects/spring-data-jpa "Spring Data JPA")
 1. [MapStruct](https://mapstruct.org/ "MapStruct")
+1. [jjwt](https://github.com/jwtk/jjwt "jjwt")
 1. [WebSocket](https://docs.spring.io/spring-framework/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/websocket.html "WebSocket")
 
 #### Database
@@ -111,27 +111,28 @@
 Необходимо добавить следующие возможности:
 
 1. Поставить dislike посту.
-2. Обновить свой пост.
-3. Удалить свой пост. Soft deletion - пост должен остаться в базе данных.
-4. Обновить свой комментарий.
-5. Удалить свой комментарий. Soft deletion - комментарий должен остаться в базе данных.
-6. Поставить like комментарию.
-7. Поставить dislike комментарию.
-8. Фильтр - не отображать свои посты, а отображать только чужие.
-9. Фильтр - отображать только те посты, которым я (как пользователь) поставил лайк.
-10. Отобразить кто поставил like/dislike посту.
-11. Отобразить кто поставил like/dislike комментарию.
-12. Обновить собственный профиль. Добавить валидацию.
-13. Устанавливать статус пользователя (например, "А сегодня, в завтрашний день, не все могут смотреть. Вернее.."). Отображать его под username.
-14. Сбросить пароль (Forgot password). Отправить email с ссылкой на страницу изменения пароля.
-15. Отправить пользователю email, если его посту поставили like.
-16. Поделиться постом по email.
+1. Обновить свой пост.
+1. Удалить свой пост. Soft deletion - пост должен остаться в базе данных.
+1. Обновить свой комментарий.
+1. Удалить свой комментарий. Soft deletion - комментарий должен остаться в базе данных.
+1. Поставить like комментарию.
+1. Поставить dislike комментарию.
+1. Фильтр - не отображать свои посты, а отображать только чужие.
+1. Фильтр - отображать только те посты, которым я (как пользователь) поставил лайк.
+1. Отобразить кто поставил like/dislike посту.
+1. Отобразить кто поставил like/dislike комментарию.
+1. Добавить больше real-time уведомлений (websocket), например при обновлении/удалении поста/комментария.
+1. Обновить собственный профиль. Добавить валидацию (например, пользователь не должен иметь возможности сохранить невалидный email).
+1. Устанавливать статус пользователя (например, "А сегодня, в завтрашний день, не все могут смотреть. Вернее.."). Отображать его под username.
+1. Сбросить пароль (Forgot password). Отправить email с ссылкой на страницу изменения пароля.
+1. Отправить пользователю email, если его посту поставили like.
+1. Поделиться постом по email.
 
 ## PS
-Весь список тасков также можно найти на доске [**Trello**](https://trello.com/b/9Y9ZIr6j "**Trello**") в колонке Backlog Students. Доску нужно скопировать себе и по ней работать. Это поможет вам отслеживать весь процесс своей работы, а нам - определить, что уже готово. Таск будет считаться выполненным, если он полностью завершен и фича работает. Посмотрим на ее реализацию и оценим, правильно ли распределили логику в проекте. Это покажет, насколько вы разобрались в архитектуре. Также дадим комментарии по коду.
+Весь список тасков также можно найти на доске [**Trello**](https://trello.com/b/q23vPcv6 "**Trello**") в колонке Backlog Students. Доску нужно скопировать себе и по ней работать. Это поможет вам отслеживать весь процесс своей работы, а нам - определить, что уже готово. Таск будет считаться выполненным, если он полностью завершен и фича работает. Посмотрим на ее реализацию и оценим, правильно ли распределили логику в проекте. Это покажет, насколько вы разобрались в архитектуре. Также дадим комментарии по коду.
 
 Основной результат работы можно определить тем, как глубоко вы смогли разобраться в проекте и понять его, и как далеко продвинулись в личном обучении.
 
 Ссылки:
 1. [Репозиторий](https://github.com/BinaryStudioAcademy/thread-java).
-2. [Trello](https://trello.com/b/9Y9ZIr6j).
+2. [Trello](https://trello.com/b/q23vPcv6).
