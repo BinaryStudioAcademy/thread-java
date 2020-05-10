@@ -76,6 +76,12 @@
 
 1. Запустить проект можно с помощью предустановленной IDE.
 
+1. Установить [lombok plugin](https://github.com/mplushnikov/lombok-intellij-plugin)
+    - Используя встроенную системы плагинов IDE в Windows:
+        - <kbd>File</kbd> > <kbd>Settings</kbd> > <kbd>Plugins</kbd> > <kbd>Browse repositories...</kbd> > <kbd>Search for "lombok"</kbd> > <kbd>Install Plugin</kbd>
+    - Вручную:
+        - Загрузите [latest release](https://github.com/mplushnikov/lombok-intellij-plugin/releases/latest) и установите его вручную, используя <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Install plugin from disk...</kbd>
+
 1. При первом старте создадутся все таблицы и автоматически засуститься Seed базы данных для заполнения ее первоначальными данными.
 
 #### Frontend
