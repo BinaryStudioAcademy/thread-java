@@ -19,7 +19,7 @@
 1. [WebSocket](https://en.wikipedia.org/wiki/WebSocket "WebSocket")
 
 #### Frontend
-1. ES2018
+1. ES2020
 1. [React](https://reactjs.org/docs/getting-started.html "React")
 1. [React Redux](https://redux.js.org/introduction/getting-started "React Redux")
 1. [React Semantic UI](https://react.semantic-ui.com/ "React Semantic UI")
@@ -27,6 +27,7 @@
 1. [validator.js](https://www.npmjs.com/package/validator "validator.js")
 1. [npm](https://en.wikipedia.org/wiki/Npm_(software))
 1. [ESLint](https://eslint.org/docs/user-guide/getting-started "ESLint")
+1. [history](https://www.npmjs.com/package/history "history")
 
 #### Backend
 1. [spring](https://spring.io/ "spring")

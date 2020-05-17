@@ -7,37 +7,42 @@ import 'react-notifications/lib/notifications.css';
 
 const Notifications = ({ user, applyPost }) => {
 
-  const initSocket = () => new Promise((resolve, reject) => {
-    const socket = new SockJS("/ws");
-    const stompClient = Stomp.over(socket);
-    stompClient.debug = () => { };
-    stompClient.connect({}, () => {
-      console.log('connected');
-      resolve(stompClient);
-    });
-  });
-
-
-  useEffect(async () => {
+  useEffect(() => {
     if (!user) {
       return undefined;
     }
 
-    let stompClient = await initSocket();
+    let stompClient;
+    async function subscribe() {
 
-    const { id } = user;
+      const initSocket = new Promise((resolve, reject) => {
+        const socket = new SockJS("/ws");
+        const stompClient = Stomp.over(socket);
+        stompClient.debug = () => { };
+        stompClient.connect({}, () => {
+          console.log('connected');
+          resolve(stompClient);
+        });
+      });
 
-    stompClient.subscribe('/topic/like', () => {
-      NotificationManager.info('Your post was liked!');
-    });
+      stompClient = await initSocket;
 
-    stompClient.subscribe('/topic/new_post', (message) => {
-      let post = JSON.parse(message.body);
-      console.log('message from server2: ' + post);
-      if (post.userId !== id) {
-        applyPost(post.id);
-      }
-    });
+      const { id } = user;
+
+      stompClient.subscribe('/topic/like', () => {
+        NotificationManager.info('Your post was liked!');
+      });
+
+      stompClient.subscribe('/topic/new_post', (message) => {
+        let post = JSON.parse(message.body);
+        console.log('message from server2: ' + post);
+        if (post.userId !== id) {
+          applyPost(post.id);
+        }
+      });
+    }
+
+    subscribe();
 
     return () => {
       stompClient.disconnect();
