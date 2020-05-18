@@ -6,26 +6,16 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import 'react-notifications/lib/notifications.css';
 
 const Notifications = ({ user, applyPost }) => {
+  const [stompClient] = useState(Stomp.over(new SockJS('/ws')));
 
   useEffect(() => {
     if (!user) {
       return undefined;
     }
 
-    let stompClient;
-    async function subscribe() {
-
-      const initSocket = new Promise((resolve, reject) => {
-        const socket = new SockJS("/ws");
-        const stompClient = Stomp.over(socket);
-        stompClient.debug = () => { };
-        stompClient.connect({}, () => {
-          console.log('connected');
-          resolve(stompClient);
-        });
-      });
-
-      stompClient = await initSocket;
+    stompClient.debug = () => { };
+    stompClient.connect({}, () => {
+      console.log('connected');
 
       const { id } = user;
 
@@ -33,16 +23,13 @@ const Notifications = ({ user, applyPost }) => {
         NotificationManager.info('Your post was liked!');
       });
 
-      stompClient.subscribe('/topic/new_post', (message) => {
-        let post = JSON.parse(message.body);
-        console.log('message from server2: ' + post);
+      stompClient.subscribe('/topic/new_post', message => {
+        const post = JSON.parse(message.body);
         if (post.userId !== id) {
           applyPost(post.id);
         }
       });
-    }
-
-    subscribe();
+    });
 
     return () => {
       stompClient.disconnect();

@@ -83,7 +83,7 @@
     - Вручную:
         - Загрузите [latest release](https://github.com/mplushnikov/lombok-intellij-plugin/releases/latest) и установите его вручную, используя <kbd>Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Install plugin from disk...</kbd>
 
-1. При первом старте создадутся все таблицы и автоматически засуститься Seed базы данных для заполнения ее первоначальными данными.
+1. При первом старте создадутся все таблицы и автоматически запуститься Seed базы данных для заполнения ее первоначальными данными.
 
 #### Frontend
 
