@@ -41,7 +41,7 @@ public class ImageService {
 
         var requestEntity = new HttpEntity<>(body, headers);
 
-        var serverUrl = "https://api.imgur.com/3/upload";
+        var serverUrl = "https://api.imgur.com/3/image";
 
         var restTemplate = new RestTemplate();
         var response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
