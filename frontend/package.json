@@ -5,7 +5,7 @@
     "node": "14.x.x",
     "npm": "6.x.x"
   },
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:8080/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

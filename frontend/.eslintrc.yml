@@ -1,12 +1,13 @@
 extends:
   - react-app
   - airbnb
-  - ../.eslintrc.yml
 
 env:
   browser: true
+  es6: true
 
 parserOptions:
+  ecmaVersion: 2020
   ecmaFeatures:
     jsx: true
   sourceType: module
@@ -43,4 +44,27 @@ rules:
   jsx-a11y/click-events-have-key-events:
     - off
   jsx-a11y/label-has-associated-control:
+    - off
+  comma-dangle:
+    - error
+    - never
+  arrow-parens:
+    - error
+    - as-needed
+  no-multiple-empty-lines:
+    - error
+    - max: 1
+  no-underscore-dangle:
+    - error
+    - allowAfterThis: true
+  max-len:
+    - error
+    - code: 120
+  class-methods-use-this:
+    - off
+  object-curly-newline:
+    - off
+  no-param-reassign:
+    - off
+  import/prefer-default-export:
     - off

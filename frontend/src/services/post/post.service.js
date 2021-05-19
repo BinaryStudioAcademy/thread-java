@@ -27,7 +27,7 @@ class Post {
   }
 
   likePost(postId) {
-    return this._http.load('/api/posts/react', {
+    return this._http.load('/api/postreaction', {
       method: HttpMethod.PUT,
       contentType: ContentType.JSON,
       payload: JSON.stringify({

@@ -24,7 +24,7 @@ class Auth {
   }
 
   getCurrentUser() {
-    return this._http.load('/api/auth/user', {
+    return this._http.load('/api/user', {
       method: HttpMethod.GET
     });
   }
