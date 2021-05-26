@@ -35,7 +35,7 @@
 1. [Spring Data JPA](https://spring.io/projects/spring-data-jpa "Spring Data JPA")
 1. [MapStruct](https://mapstruct.org/ "MapStruct")
 1. [jjwt](https://github.com/jwtk/jjwt "jjwt")
-1. [WebSocket](https://docs.spring.io/spring-framework/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/html/websocket.html "WebSocket")
+1. [WebSocket](https://spring.io/guides/gs/messaging-stomp-websocket/ "WebSocket")
 
 #### Database
 1. [PostgreSQL](https://www.postgresql.org/download/ "PostgreSQL")
