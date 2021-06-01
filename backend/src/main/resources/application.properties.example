@@ -29,10 +29,10 @@ auth0.secret-key:eyJhbGciOiJIUzI1NiJ9eyJzdWIiOiJKb2UifQ1KP0SsvENi7Uz1oQc07aXTL7k
 #-------------------------
 # Image Storage
 #-------------------------
-# IMGUR_ID - has to be changed to a real key from Imgur
-# IMGUR_SECRET - has to be changed to a real key from Imgur
-imgur.id = imgurclientid
-imgur.secret = imgurclientsecret
+# Gyazo access-token - has to be changed to a real key from Gyazo
+gyazo.upload-url = https://upload.gyazo.com/api/upload
+gyazo.image-api-url = https://api.gyazo.com/api/images
+gyazo.access-token = your-access-token
 
 
 spring.jackson.serialization.fail-on-empty-beans=false
